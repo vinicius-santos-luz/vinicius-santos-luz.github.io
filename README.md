@@ -2,6 +2,64 @@
 
 Aplicativo web local para armazenar emails, senhas, bancos, agencias, contas e acessos de aplicativos.
 
+## Cofre privado e compartilhado
+
+O app tem dois modos:
+
+- Privado: credenciais pessoais do usuario.
+- Compartilhado: credenciais que podem ser usadas pela equipe.
+
+Em uma credencial privada, use **Compartilhar** para criar uma copia no cofre compartilhado com sincronizacao automatica.
+
+Enquanto a sincronizacao estiver ativa:
+
+- editar e salvar a credencial privada atualiza a copia compartilhada;
+- a copia compartilhada fica visivel no modo Compartilhado;
+- **Parar sync** interrompe novas atualizacoes e mantem a copia compartilhada como item independente.
+
+Esta versao ainda salva tudo no navegador atual. Para varios funcionarios acessarem o mesmo cofre compartilhado em dispositivos diferentes, sera necessario conectar um backend com login, banco de dados, permissoes e sincronizacao online.
+
+## Backend
+
+O backend inicial esta em `backend/`.
+
+Ele inclui:
+
+- cadastro e login de usuarios;
+- workspace da empresa;
+- membros com papel `admin`, `editor` ou `viewer`;
+- credenciais privadas por usuario;
+- credenciais compartilhadas por workspace;
+- auditoria basica;
+- armazenamento em JSON local para desenvolvimento.
+
+Para rodar:
+
+```powershell
+cd "C:\Users\ViniciusLuz\Documents\New project\backend"
+.\start-backend.ps1
+```
+
+API local:
+
+`http://localhost:8787/api/health`
+
+## Frontend conectado a API
+
+A tela inicial agora usa login/cadastro online.
+
+Campos:
+
+- API: use `http://127.0.0.1:8787` no PC, ou `http://IP-DO-PC:8787` no celular dentro da mesma rede.
+- Email: usuario da empresa.
+- Senha mestra: usada para login e para criptografar/descriptografar os itens antes de enviar para a API.
+
+No cadastro, o primeiro usuario cria o workspace da empresa e vira `admin`.
+
+Para compartilhar itens entre funcionarios, todos precisam conseguir descriptografar o cofre compartilhado. Nesta versao MVP isso significa usar a mesma senha mestra para os itens compartilhados do workspace. A proxima evolucao correta e implementar chaves por usuario/convite, para cada funcionario poder ter senha propria sem perder acesso ao compartilhado.
+
+Para producao, troque o `JWT_SECRET`, use HTTPS e substitua o JSON local por um banco como PostgreSQL/Supabase.
+
 ## Abrir no computador
 
 ```powershell

@@ -296,6 +296,34 @@ textarea {
   margin-bottom: 14px;
 }
 
+.vault-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.auth-mode {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.vault-tab {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: white;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.vault-tab.active {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+
 .tab {
   min-width: 0;
   padding: 0 7px;
@@ -360,6 +388,19 @@ textarea {
   gap: 16px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--line);
+}
+
+.sync-panel {
+  border: 1px solid #cfe1e6;
+  border-radius: 6px;
+  background: #f1f8fa;
+  padding: 12px;
+  display: grid;
+  gap: 4px;
+}
+
+.sync-panel strong {
+  color: var(--accent-strong);
 }
 
 .field-row {

@@ -20,12 +20,24 @@
         </div>
 
         <form id="authForm" class="auth-panel">
+          <div class="auth-mode">
+            <button id="loginModeButton" class="vault-tab active" type="button">Entrar</button>
+            <button id="registerModeButton" class="vault-tab" type="button">Cadastrar</button>
+          </div>
+          <label for="apiBaseUrl">API</label>
+          <input id="apiBaseUrl" type="url" inputmode="url" autocomplete="off" value="http://127.0.0.1:8787" />
+          <label id="nameLabel" for="userName" class="hidden">Nome</label>
+          <input id="userName" class="hidden" type="text" autocomplete="name" />
+          <label for="userEmail">Email</label>
+          <input id="userEmail" type="email" autocomplete="email" required />
+          <label id="workspaceLabel" for="workspaceName" class="hidden">Empresa</label>
+          <input id="workspaceName" class="hidden" type="text" autocomplete="organization" placeholder="Minha empresa" />
           <label for="masterPassword">Senha mestra</label>
           <div class="password-row">
             <input id="masterPassword" type="password" autocomplete="current-password" required minlength="10" />
             <button id="toggleMaster" class="icon-button" type="button" title="Mostrar ou ocultar senha">Ver</button>
           </div>
-          <label id="confirmLabel" for="confirmPassword" class="hidden">Confirmar senha mestra</label>
+          <label id="confirmLabel" for="confirmPassword" class="hidden">Confirmar senha</label>
           <input id="confirmPassword" class="hidden" type="password" autocomplete="new-password" minlength="10" />
           <button id="authButton" type="submit" class="primary-button wide">Desbloquear</button>
           <p id="authMessage" class="message" role="status"></p>
@@ -42,6 +54,7 @@
             </div>
           </div>
           <div class="topbar-actions">
+            <button id="syncButton" class="ghost-button" type="button">Sincronizar</button>
             <button id="exportButton" class="ghost-button" type="button">Exportar</button>
             <label class="ghost-button file-action" for="importFile">Importar</label>
             <input id="importFile" type="file" accept="application/json" />
@@ -57,6 +70,10 @@
 
         <div class="content-grid">
           <aside id="listPanel" class="sidebar">
+            <div class="vault-tabs" aria-label="Modo do cofre">
+              <button id="privateVaultButton" class="vault-tab active" type="button">Privado</button>
+              <button id="sharedVaultButton" class="vault-tab" type="button">Compartilhado</button>
+            </div>
             <div class="search-wrap">
               <input id="searchInput" type="search" placeholder="Buscar acesso" autocomplete="off" />
             </div>
@@ -79,9 +96,16 @@
                 </div>
                 <div class="form-actions">
                   <button id="newButton" class="ghost-button" type="button">Novo</button>
+                  <button id="shareButton" class="ghost-button hidden" type="button">Compartilhar</button>
+                  <button id="stopSyncButton" class="danger-button hidden" type="button">Parar sync</button>
                   <button id="deleteButton" class="danger-button hidden" type="button">Excluir</button>
                   <button class="primary-button" type="submit">Salvar</button>
                 </div>
+              </div>
+
+              <div id="syncPanel" class="sync-panel hidden">
+                <strong id="syncTitle">Sincronizacao</strong>
+                <p id="syncDescription">Este item nao esta sincronizado.</p>
               </div>
 
               <div class="field-row">
