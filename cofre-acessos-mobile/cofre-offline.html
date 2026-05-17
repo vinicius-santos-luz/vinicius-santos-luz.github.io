@@ -1,0 +1,1195 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#102033" />
+    <title>Cofre de Acessos</title>
+    <style>
+:root {
+  color-scheme: light;
+  --bg: #f4f7f8;
+  --panel: #ffffff;
+  --ink: #142033;
+  --muted: #647086;
+  --line: #dce4ea;
+  --accent: #176f83;
+  --accent-strong: #104f5e;
+  --danger: #b9363f;
+  --danger-bg: #fff0f1;
+  --green: #287a55;
+  --shadow: 0 18px 56px rgba(18, 32, 51, 0.13);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, Segoe UI, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.auth-screen {
+  width: min(480px, calc(100vw - 32px));
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  padding: 20px 0 calc(20px + var(--safe-bottom));
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  background: var(--ink);
+  color: white;
+  font-weight: 800;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 1;
+}
+
+h2 {
+  font-size: 1.22rem;
+}
+
+p {
+  color: var(--muted);
+}
+
+.auth-panel,
+.editor-panel,
+.sidebar {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.auth-panel {
+  border-radius: 8px;
+  padding: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+label {
+  font-weight: 750;
+  color: #283449;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px;
+  background: white;
+  color: var(--ink);
+  outline: none;
+  font-size: 16px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(23, 111, 131, 0.14);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.password-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.entry-password-row {
+  grid-template-columns: 1fr auto auto auto;
+}
+
+.primary-button,
+.ghost-button,
+.danger-button,
+.icon-button,
+.tab,
+.switch-button {
+  min-height: 44px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-weight: 800;
+}
+
+.primary-button {
+  background: var(--accent);
+  color: white;
+  padding: 0 18px;
+}
+
+.primary-button:hover {
+  background: var(--accent-strong);
+}
+
+.wide {
+  width: 100%;
+}
+
+.ghost-button {
+  background: white;
+  border-color: var(--line);
+  color: var(--ink);
+  padding: 0 14px;
+}
+
+.danger-button {
+  background: var(--danger-bg);
+  border-color: #f0b6bc;
+  color: var(--danger);
+  padding: 0 14px;
+}
+
+.icon-button {
+  min-width: 44px;
+  width: auto;
+  background: #eef5f6;
+  border-color: #d6e6e9;
+  color: var(--accent-strong);
+  padding: 0 10px;
+}
+
+.message {
+  min-height: 22px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.message.error {
+  color: var(--danger);
+}
+
+.message.success {
+  color: var(--green);
+}
+
+.vault-screen {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.brand-row.compact h1 {
+  font-size: 1.35rem;
+}
+
+.brand-row.compact .brand-mark {
+  width: 42px;
+  height: 42px;
+}
+
+.topbar-actions,
+.form-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#importFile {
+  display: none;
+}
+
+.file-action {
+  display: inline-grid;
+  place-items: center;
+}
+
+.mobile-switch {
+  display: none;
+}
+
+.content-grid {
+  width: min(1280px, calc(100vw - 32px));
+  margin: 22px auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 20px;
+}
+
+.sidebar,
+.editor-panel {
+  border-radius: 8px;
+}
+
+.sidebar {
+  min-height: 650px;
+  padding: 16px;
+}
+
+.search-wrap {
+  margin-bottom: 14px;
+}
+
+.type-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tab {
+  min-width: 0;
+  padding: 0 7px;
+  background: #f2f5f7;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.tab.active {
+  background: var(--ink);
+  color: white;
+}
+
+.entry-list {
+  display: grid;
+  gap: 8px;
+}
+
+.entry-item {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 6px;
+  padding: 13px;
+}
+
+.entry-item.active {
+  border-color: var(--accent);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.entry-item strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.entry-meta {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.editor-panel {
+  padding: 22px;
+}
+
+#entryForm {
+  display: grid;
+  gap: 16px;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.field-row {
+  display: grid;
+  gap: 7px;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.floating-add {
+  display: none;
+}
+
+@media (max-width: 920px) {
+  .topbar,
+  .form-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  body {
+    background: #eef3f5;
+  }
+
+  .auth-screen {
+    width: 100%;
+    justify-content: flex-start;
+    padding: max(28px, env(safe-area-inset-top, 0px)) 16px calc(18px + var(--safe-bottom));
+  }
+
+  .auth-panel {
+    box-shadow: none;
+  }
+
+  .topbar {
+    padding: max(12px, env(safe-area-inset-top, 0px)) 12px 10px;
+    gap: 10px;
+  }
+
+  .topbar-actions {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .topbar-actions > * {
+    width: 100%;
+    min-width: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 0.88rem;
+  }
+
+  .mobile-switch {
+    position: sticky;
+    top: 115px;
+    z-index: 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(238, 243, 245, 0.96);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+  }
+
+  .switch-button {
+    background: white;
+    border-color: var(--line);
+    color: var(--muted);
+  }
+
+  .switch-button.active {
+    background: var(--ink);
+    color: white;
+  }
+
+  .content-grid {
+    width: 100%;
+    margin: 0;
+    display: block;
+    padding: 10px 10px calc(86px + var(--safe-bottom));
+  }
+
+  .sidebar,
+  .editor-panel {
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    padding: 12px;
+  }
+
+  .editor-panel {
+    padding: 16px;
+  }
+
+  .vault-screen[data-mobile-screen="list"] #formPanel,
+  .vault-screen[data-mobile-screen="form"] #listPanel {
+    display: none;
+  }
+
+  .type-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .entry-list {
+    gap: 10px;
+  }
+
+  .entry-item {
+    min-height: 66px;
+    padding: 14px;
+  }
+
+  .form-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .form-actions .primary-button {
+    grid-column: 1 / -1;
+  }
+
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-password-row {
+    grid-template-columns: 1fr repeat(3, minmax(58px, auto));
+  }
+
+  .floating-add {
+    position: fixed;
+    right: 16px;
+    bottom: calc(18px + var(--safe-bottom));
+    z-index: 8;
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 2rem;
+    line-height: 1;
+    box-shadow: 0 12px 28px rgba(16, 79, 94, 0.32);
+  }
+
+  .vault-screen[data-mobile-screen="form"] .floating-add {
+    display: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .entry-password-row {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-password-row .icon-button {
+    width: 100%;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="lockedView" class="auth-screen">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">CA</div>
+          <div>
+            <h1>Cofre de Acessos</h1>
+            <p id="vaultStatus">Cofre local criptografado</p>
+          </div>
+        </div>
+
+        <form id="authForm" class="auth-panel">
+          <label for="masterPassword">Senha mestra</label>
+          <div class="password-row">
+            <input id="masterPassword" type="password" autocomplete="current-password" required minlength="10" />
+            <button id="toggleMaster" class="icon-button" type="button" title="Mostrar ou ocultar senha">Ver</button>
+          </div>
+          <label id="confirmLabel" for="confirmPassword" class="hidden">Confirmar senha mestra</label>
+          <input id="confirmPassword" class="hidden" type="password" autocomplete="new-password" minlength="10" />
+          <button id="authButton" type="submit" class="primary-button wide">Desbloquear</button>
+          <p id="authMessage" class="message" role="status"></p>
+        </form>
+      </section>
+
+      <section id="vaultView" class="vault-screen hidden" data-mobile-screen="list">
+        <header class="topbar">
+          <div class="brand-row compact">
+            <div class="brand-mark" aria-hidden="true">CA</div>
+            <div>
+              <h1>Cofre</h1>
+              <p id="entryCount">0 itens</p>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <button id="exportButton" class="ghost-button" type="button">Exportar</button>
+            <label class="ghost-button file-action" for="importFile">Importar</label>
+            <input id="importFile" type="file" accept="application/json" />
+            <button id="installButton" class="ghost-button hidden" type="button">Instalar</button>
+            <button id="lockButton" class="danger-button" type="button">Bloquear</button>
+          </div>
+        </header>
+
+        <div class="mobile-switch" aria-label="Navegacao do cofre">
+          <button id="showListButton" class="switch-button active" type="button">Itens</button>
+          <button id="showFormButton" class="switch-button" type="button">Detalhes</button>
+        </div>
+
+        <div class="content-grid">
+          <aside id="listPanel" class="sidebar">
+            <div class="search-wrap">
+              <input id="searchInput" type="search" placeholder="Buscar acesso" autocomplete="off" />
+            </div>
+            <div class="type-tabs" role="tablist" aria-label="Categorias">
+              <button class="tab active" type="button" data-filter="all">Todos</button>
+              <button class="tab" type="button" data-filter="email">Emails</button>
+              <button class="tab" type="button" data-filter="bank">Bancos</button>
+              <button class="tab" type="button" data-filter="app">Apps</button>
+              <button class="tab" type="button" data-filter="other">Outros</button>
+            </div>
+            <div id="entryList" class="entry-list" aria-label="Itens salvos"></div>
+          </aside>
+
+          <section id="formPanel" class="editor-panel">
+            <form id="entryForm">
+              <div class="form-header">
+                <div>
+                  <h2 id="formTitle">Novo acesso</h2>
+                  <p id="lastUpdated">Sem alteracoes</p>
+                </div>
+                <div class="form-actions">
+                  <button id="newButton" class="ghost-button" type="button">Novo</button>
+                  <button id="deleteButton" class="danger-button hidden" type="button">Excluir</button>
+                  <button class="primary-button" type="submit">Salvar</button>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="entryType">Tipo</label>
+                <select id="entryType">
+                  <option value="email">Email</option>
+                  <option value="bank">Banco</option>
+                  <option value="app">Aplicativo</option>
+                  <option value="other">Outro</option>
+                </select>
+              </div>
+
+              <div class="field-row">
+                <label for="entryTitle">Nome</label>
+                <input id="entryTitle" type="text" required autocomplete="off" placeholder="Ex.: Banco, Gmail, app" />
+              </div>
+
+              <div class="two-columns">
+                <div class="field-row">
+                  <label for="entryLogin">Usuario</label>
+                  <input id="entryLogin" type="text" autocomplete="off" />
+                </div>
+                <div class="field-row">
+                  <label for="entryEmail">Email</label>
+                  <input id="entryEmail" type="email" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="entryPassword">Senha</label>
+                <div class="password-row entry-password-row">
+                  <input id="entryPassword" type="password" autocomplete="off" />
+                  <button id="toggleEntryPassword" class="icon-button" type="button" title="Mostrar ou ocultar senha">Ver</button>
+                  <button id="copyPassword" class="icon-button" type="button" title="Copiar senha">Copiar</button>
+                  <button id="generatePassword" class="icon-button" type="button" title="Gerar senha">Gerar</button>
+                </div>
+              </div>
+
+              <div class="two-columns">
+                <div class="field-row">
+                  <label for="entryAgency">Agencia</label>
+                  <input id="entryAgency" type="text" inputmode="numeric" autocomplete="off" />
+                </div>
+                <div class="field-row">
+                  <label for="entryAccount">Conta</label>
+                  <input id="entryAccount" type="text" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="two-columns">
+                <div class="field-row">
+                  <label for="entryUrl">Site</label>
+                  <input id="entryUrl" type="url" inputmode="url" autocomplete="off" placeholder="https://" />
+                </div>
+                <div class="field-row">
+                  <label for="entryPhone">Telefone</label>
+                  <input id="entryPhone" type="tel" inputmode="tel" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="entryNotes">Notas</label>
+                <textarea id="entryNotes" rows="5"></textarea>
+              </div>
+
+              <p id="saveMessage" class="message" role="status"></p>
+            </form>
+          </section>
+        </div>
+
+        <button id="mobileNewButton" class="floating-add" type="button" title="Novo acesso">+</button>
+      </section>
+    </main>
+
+    <script>
+const STORAGE_KEY = "cofre-acessos-v1";
+const KDF_ITERATIONS = 310000;
+const encoder = new TextEncoder();
+const decoder = new TextDecoder();
+
+const state = {
+  masterKey: null,
+  store: null,
+  entries: [],
+  activeId: null,
+  filter: "all",
+  query: "",
+  lockTimer: null,
+};
+
+const $ = (id) => document.getElementById(id);
+
+const elements = {
+  lockedView: $("lockedView"),
+  vaultView: $("vaultView"),
+  vaultStatus: $("vaultStatus"),
+  authForm: $("authForm"),
+  masterPassword: $("masterPassword"),
+  confirmPassword: $("confirmPassword"),
+  confirmLabel: $("confirmLabel"),
+  authButton: $("authButton"),
+  authMessage: $("authMessage"),
+  toggleMaster: $("toggleMaster"),
+  entryCount: $("entryCount"),
+  exportButton: $("exportButton"),
+  importFile: $("importFile"),
+  installButton: $("installButton"),
+  lockButton: $("lockButton"),
+  showListButton: $("showListButton"),
+  showFormButton: $("showFormButton"),
+  searchInput: $("searchInput"),
+  entryList: $("entryList"),
+  entryForm: $("entryForm"),
+  formTitle: $("formTitle"),
+  lastUpdated: $("lastUpdated"),
+  newButton: $("newButton"),
+  mobileNewButton: $("mobileNewButton"),
+  deleteButton: $("deleteButton"),
+  entryType: $("entryType"),
+  entryTitle: $("entryTitle"),
+  entryLogin: $("entryLogin"),
+  entryEmail: $("entryEmail"),
+  entryPassword: $("entryPassword"),
+  toggleEntryPassword: $("toggleEntryPassword"),
+  copyPassword: $("copyPassword"),
+  generatePassword: $("generatePassword"),
+  entryAgency: $("entryAgency"),
+  entryAccount: $("entryAccount"),
+  entryUrl: $("entryUrl"),
+  entryPhone: $("entryPhone"),
+  entryNotes: $("entryNotes"),
+  saveMessage: $("saveMessage"),
+};
+
+let deferredInstallPrompt = null;
+
+function bytesToBase64(bytes) {
+  let binary = "";
+  const view = new Uint8Array(bytes);
+  for (let index = 0; index < view.length; index += 1) {
+    binary += String.fromCharCode(view[index]);
+  }
+  return btoa(binary);
+}
+
+function base64ToBytes(value) {
+  return Uint8Array.from(atob(value), (char) => char.charCodeAt(0));
+}
+
+function randomBytes(length) {
+  const bytes = new Uint8Array(length);
+  crypto.getRandomValues(bytes);
+  return bytes;
+}
+
+async function deriveKey(password, salt) {
+  const baseKey = await crypto.subtle.importKey("raw", encoder.encode(password), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey(
+    { name: "PBKDF2", salt, iterations: KDF_ITERATIONS, hash: "SHA-256" },
+    baseKey,
+    { name: "AES-GCM", length: 256 },
+    false,
+    ["encrypt", "decrypt"]
+  );
+}
+
+async function encryptJson(key, payload) {
+  const iv = randomBytes(12);
+  const data = encoder.encode(JSON.stringify(payload));
+  const encrypted = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, data);
+  return {
+    iv: bytesToBase64(iv),
+    data: bytesToBase64(encrypted),
+  };
+}
+
+async function decryptJson(key, box) {
+  const decrypted = await crypto.subtle.decrypt(
+    { name: "AES-GCM", iv: base64ToBytes(box.iv) },
+    key,
+    base64ToBytes(box.data)
+  );
+  return JSON.parse(decoder.decode(decrypted));
+}
+
+function loadStore() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  return raw ? JSON.parse(raw) : null;
+}
+
+function saveStore(store) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+}
+
+function hasVault() {
+  return Boolean(loadStore());
+}
+
+function isMobileLayout() {
+  return window.matchMedia("(max-width: 680px)").matches;
+}
+
+function setMobileScreen(screen) {
+  elements.vaultView.dataset.mobileScreen = screen;
+  elements.showListButton.classList.toggle("active", screen === "list");
+  elements.showFormButton.classList.toggle("active", screen === "form");
+}
+
+function setMessage(element, text, type = "") {
+  element.textContent = text;
+  element.className = `message ${type}`.trim();
+}
+
+function resetLockTimer() {
+  clearTimeout(state.lockTimer);
+  state.lockTimer = setTimeout(lockVault, 5 * 60 * 1000);
+}
+
+async function createVault(password) {
+  const salt = randomBytes(16);
+  const key = await deriveKey(password, salt);
+  const now = new Date().toISOString();
+  const store = {
+    version: 1,
+    kdf: "PBKDF2-SHA256",
+    iterations: KDF_ITERATIONS,
+    salt: bytesToBase64(salt),
+    verifier: await encryptJson(key, { ok: true }),
+    vault: await encryptJson(key, { entries: [], createdAt: now, updatedAt: now }),
+  };
+  saveStore(store);
+  state.masterKey = key;
+  state.store = store;
+  state.entries = [];
+  unlockView();
+}
+
+async function unlockVault(password) {
+  const store = loadStore();
+  const key = await deriveKey(password, base64ToBytes(store.salt));
+  await decryptJson(key, store.verifier);
+  const vault = await decryptJson(key, store.vault);
+  state.masterKey = key;
+  state.store = store;
+  state.entries = Array.isArray(vault.entries) ? vault.entries : [];
+  unlockView();
+}
+
+async function persistEntries() {
+  const now = new Date().toISOString();
+  state.store.vault = await encryptJson(state.masterKey, { entries: state.entries, updatedAt: now });
+  saveStore(state.store);
+  renderEntries();
+}
+
+function unlockView() {
+  elements.masterPassword.value = "";
+  elements.confirmPassword.value = "";
+  elements.lockedView.classList.add("hidden");
+  elements.vaultView.classList.remove("hidden");
+  setMobileScreen("list");
+  elements.searchInput.focus();
+  resetForm();
+  renderEntries();
+  resetLockTimer();
+}
+
+function lockVault() {
+  clearTimeout(state.lockTimer);
+  state.masterKey = null;
+  state.store = null;
+  state.entries = [];
+  state.activeId = null;
+  elements.vaultView.classList.add("hidden");
+  elements.lockedView.classList.remove("hidden");
+  elements.masterPassword.value = "";
+  elements.masterPassword.focus();
+  setupAuthMode();
+}
+
+function setupAuthMode() {
+  const exists = hasVault();
+  elements.vaultStatus.textContent = exists ? "Cofre local criptografado" : "Criar cofre local criptografado";
+  elements.authButton.textContent = exists ? "Desbloquear" : "Criar cofre";
+  elements.confirmPassword.classList.toggle("hidden", exists);
+  elements.confirmLabel.classList.toggle("hidden", exists);
+  elements.confirmPassword.required = !exists;
+  setMessage(elements.authMessage, "");
+}
+
+function formatType(type) {
+  return { email: "Email", bank: "Banco", app: "Aplicativo", other: "Outro" }[type] || "Outro";
+}
+
+function renderEntries() {
+  const query = state.query.trim().toLowerCase();
+  const visible = state.entries
+    .filter((entry) => state.filter === "all" || entry.type === state.filter)
+    .filter((entry) => {
+      const haystack = [
+        entry.title,
+        entry.login,
+        entry.email,
+        entry.url,
+        entry.agency,
+        entry.account,
+        entry.phone,
+        entry.notes,
+      ].join(" ").toLowerCase();
+      return !query || haystack.includes(query);
+    })
+    .sort((a, b) => a.title.localeCompare(b.title, "pt-BR"));
+
+  elements.entryCount.textContent = `${state.entries.length} ${state.entries.length === 1 ? "item" : "itens"}`;
+  elements.entryList.innerHTML = "";
+
+  if (!visible.length) {
+    const empty = document.createElement("p");
+    empty.className = "entry-meta";
+    empty.textContent = "Nenhum item encontrado";
+    elements.entryList.append(empty);
+    return;
+  }
+
+  for (const entry of visible) {
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = `entry-item ${entry.id === state.activeId ? "active" : ""}`;
+    item.innerHTML = `
+      <strong>${escapeHtml(entry.title || "Sem nome")}</strong>
+      <div class="entry-meta">${formatType(entry.type)}${entry.email ? ` - ${escapeHtml(entry.email)}` : ""}</div>
+    `;
+    item.addEventListener("click", () => selectEntry(entry.id));
+    elements.entryList.append(item);
+  }
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function selectEntry(id) {
+  const entry = state.entries.find((item) => item.id === id);
+  if (!entry) return;
+  state.activeId = id;
+  elements.formTitle.textContent = "Editar acesso";
+  elements.deleteButton.classList.remove("hidden");
+  elements.entryType.value = entry.type || "other";
+  elements.entryTitle.value = entry.title || "";
+  elements.entryLogin.value = entry.login || "";
+  elements.entryEmail.value = entry.email || "";
+  elements.entryPassword.value = entry.password || "";
+  elements.entryAgency.value = entry.agency || "";
+  elements.entryAccount.value = entry.account || "";
+  elements.entryUrl.value = entry.url || "";
+  elements.entryPhone.value = entry.phone || "";
+  elements.entryNotes.value = entry.notes || "";
+  elements.lastUpdated.textContent = entry.updatedAt ? `Alterado em ${new Date(entry.updatedAt).toLocaleString("pt-BR")}` : "";
+  setMessage(elements.saveMessage, "");
+  renderEntries();
+  if (isMobileLayout()) setMobileScreen("form");
+  resetLockTimer();
+}
+
+function resetForm() {
+  state.activeId = null;
+  elements.entryForm.reset();
+  elements.entryPassword.type = "password";
+  elements.formTitle.textContent = "Novo acesso";
+  elements.lastUpdated.textContent = "Sem alteracoes";
+  elements.deleteButton.classList.add("hidden");
+  setMessage(elements.saveMessage, "");
+  renderEntries();
+}
+
+function newEntry() {
+  resetForm();
+  setMobileScreen("form");
+  setTimeout(() => elements.entryTitle.focus(), 50);
+}
+
+function readForm() {
+  const now = new Date().toISOString();
+  return {
+    id: state.activeId || crypto.randomUUID(),
+    type: elements.entryType.value,
+    title: elements.entryTitle.value.trim(),
+    login: elements.entryLogin.value.trim(),
+    email: elements.entryEmail.value.trim(),
+    password: elements.entryPassword.value,
+    agency: elements.entryAgency.value.trim(),
+    account: elements.entryAccount.value.trim(),
+    url: elements.entryUrl.value.trim(),
+    phone: elements.entryPhone.value.trim(),
+    notes: elements.entryNotes.value.trim(),
+    createdAt: state.entries.find((entry) => entry.id === state.activeId)?.createdAt || now,
+    updatedAt: now,
+  };
+}
+
+function generatePassword() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*()-_=+?";
+  const bytes = randomBytes(24);
+  return Array.from(bytes, (byte) => chars[byte % chars.length]).join("");
+}
+
+async function exportVault() {
+  const blob = new Blob([JSON.stringify(state.store, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `cofre-acessos-${new Date().toISOString().slice(0, 10)}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+async function importVault(file) {
+  const text = await file.text();
+  const imported = JSON.parse(text);
+  if (!imported.salt || !imported.verifier || !imported.vault) {
+    throw new Error("Arquivo invalido.");
+  }
+  saveStore(imported);
+  lockVault();
+  setMessage(elements.authMessage, "Arquivo importado. Desbloqueie com a senha mestra dele.", "success");
+}
+
+elements.authForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const password = elements.masterPassword.value;
+  const exists = hasVault();
+
+  try {
+    setMessage(elements.authMessage, "Processando...");
+    if (!exists) {
+      if (password.length < 10) throw new Error("Use pelo menos 10 caracteres.");
+      if (password !== elements.confirmPassword.value) throw new Error("As senhas nao conferem.");
+      await createVault(password);
+      return;
+    }
+    await unlockVault(password);
+  } catch (error) {
+    setMessage(elements.authMessage, "Senha mestra incorreta ou cofre invalido.", "error");
+  }
+});
+
+elements.entryForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  resetLockTimer();
+  const entry = readForm();
+  if (!entry.title) {
+    setMessage(elements.saveMessage, "Informe um nome.", "error");
+    return;
+  }
+
+  const index = state.entries.findIndex((item) => item.id === entry.id);
+  if (index >= 0) {
+    state.entries[index] = entry;
+  } else {
+    state.entries.push(entry);
+  }
+  state.activeId = entry.id;
+  await persistEntries();
+  selectEntry(entry.id);
+  setMessage(elements.saveMessage, "Salvo.", "success");
+});
+
+elements.newButton.addEventListener("click", newEntry);
+elements.mobileNewButton.addEventListener("click", newEntry);
+
+elements.deleteButton.addEventListener("click", async () => {
+  if (!state.activeId) return;
+  const entry = state.entries.find((item) => item.id === state.activeId);
+  if (!confirm(`Excluir "${entry?.title || "este item"}"?`)) return;
+  state.entries = state.entries.filter((item) => item.id !== state.activeId);
+  await persistEntries();
+  resetForm();
+  setMobileScreen("list");
+});
+
+elements.showListButton.addEventListener("click", () => setMobileScreen("list"));
+elements.showFormButton.addEventListener("click", () => setMobileScreen("form"));
+
+elements.searchInput.addEventListener("input", () => {
+  state.query = elements.searchInput.value;
+  renderEntries();
+});
+
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
+    tab.classList.add("active");
+    state.filter = tab.dataset.filter;
+    renderEntries();
+  });
+});
+
+elements.toggleMaster.addEventListener("click", () => {
+  elements.masterPassword.type = elements.masterPassword.type === "password" ? "text" : "password";
+});
+
+elements.toggleEntryPassword.addEventListener("click", () => {
+  elements.entryPassword.type = elements.entryPassword.type === "password" ? "text" : "password";
+});
+
+elements.copyPassword.addEventListener("click", async () => {
+  if (!elements.entryPassword.value) return;
+  await navigator.clipboard.writeText(elements.entryPassword.value);
+  setMessage(elements.saveMessage, "Senha copiada.", "success");
+  resetLockTimer();
+});
+
+elements.generatePassword.addEventListener("click", () => {
+  elements.entryPassword.value = generatePassword();
+  setMessage(elements.saveMessage, "Senha gerada.", "success");
+});
+
+elements.exportButton.addEventListener("click", exportVault);
+elements.lockButton.addEventListener("click", lockVault);
+
+elements.installButton.addEventListener("click", async () => {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  elements.installButton.classList.add("hidden");
+});
+
+elements.importFile.addEventListener("change", async () => {
+  const [file] = elements.importFile.files;
+  if (!file) return;
+  try {
+    await importVault(file);
+  } catch (error) {
+    setMessage(elements.saveMessage, "Nao foi possivel importar o arquivo.", "error");
+  } finally {
+    elements.importFile.value = "";
+  }
+});
+
+["keydown", "click", "input"].forEach((eventName) => {
+  window.addEventListener(eventName, () => {
+    if (state.masterKey) resetLockTimer();
+  });
+});
+
+setupAuthMode();
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  elements.installButton.classList.remove("hidden");
+});
+
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  });
+}
+
+    </script>
+  </body>
+</html>

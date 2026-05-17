@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#102033" />
+    <title>Cofre de Acessos</title>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="lockedView" class="auth-screen">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">CA</div>
+          <div>
+            <h1>Cofre de Acessos</h1>
+            <p id="vaultStatus">Cofre local criptografado</p>
+          </div>
+        </div>
+
+        <form id="authForm" class="auth-panel">
+          <label for="masterPassword">Senha mestra</label>
+          <div class="password-row">
+            <input id="masterPassword" type="password" autocomplete="current-password" required minlength="10" />
+            <button id="toggleMaster" class="icon-button" type="button" title="Mostrar ou ocultar senha">Ver</button>
+          </div>
+          <label id="confirmLabel" for="confirmPassword" class="hidden">Confirmar senha mestra</label>
+          <input id="confirmPassword" class="hidden" type="password" autocomplete="new-password" minlength="10" />
+          <button id="authButton" type="submit" class="primary-button wide">Desbloquear</button>
+          <p id="authMessage" class="message" role="status"></p>
+        </form>
+      </section>
+
+      <section id="vaultView" class="vault-screen hidden" data-mobile-screen="list">
+        <header class="topbar">
+          <div class="brand-row compact">
+            <div class="brand-mark" aria-hidden="true">CA</div>
+            <div>
+              <h1>Cofre</h1>
+              <p id="entryCount">0 itens</p>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <button id="exportButton" class="ghost-button" type="button">Exportar</button>
+            <label class="ghost-button file-action" for="importFile">Importar</label>
+            <input id="importFile" type="file" accept="application/json" />
+            <button id="installButton" class="ghost-button hidden" type="button">Instalar</button>
+            <button id="lockButton" class="danger-button" type="button">Bloquear</button>
+          </div>
+        </header>
+
+        <div class="mobile-switch" aria-label="Navegacao do cofre">
+          <button id="showListButton" class="switch-button active" type="button">Itens</button>
+          <button id="showFormButton" class="switch-button" type="button">Detalhes</button>
+        </div>
+
+        <div class="content-grid">
+          <aside id="listPanel" class="sidebar">
+            <div class="search-wrap">
+              <input id="searchInput" type="search" placeholder="Buscar acesso" autocomplete="off" />
+            </div>
+            <div class="type-tabs" role="tablist" aria-label="Categorias">
+              <button class="tab active" type="button" data-filter="all">Todos</button>
+              <button class="tab" type="button" data-filter="email">Emails</button>
+              <button class="tab" type="button" data-filter="bank">Bancos</button>
+              <button class="tab" type="button" data-filter="app">Apps</button>
+              <button class="tab" type="button" data-filter="other">Outros</button>
+            </div>
+            <div id="entryList" class="entry-list" aria-label="Itens salvos"></div>
+          </aside>
+
+          <section id="formPanel" class="editor-panel">
+            <form id="entryForm">
+              <div class="form-header">
+                <div>
+                  <h2 id="formTitle">Novo acesso</h2>
+                  <p id="lastUpdated">Sem alteracoes</p>
+                </div>
+                <div class="form-actions">
+                  <button id="newButton" class="ghost-button" type="button">Novo</button>
+                  <button id="deleteButton" class="danger-button hidden" type="button">Excluir</button>
+                  <button class="primary-button" type="submit">Salvar</button>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="entryType">Tipo</label>
+                <select id="entryType">
+                  <option value="email">Email</option>
+                  <option value="bank">Banco</option>
+                  <option value="app">Aplicativo</option>
+                  <option value="other">Outro</option>
+                </select>
+              </div>
+
+              <div class="field-row">
+                <label for="entryTitle">Nome</label>
+                <input id="entryTitle" type="text" required autocomplete="off" placeholder="Ex.: Banco, Gmail, app" />
+              </div>
+
+              <div class="two-columns">
+                <div class="field-row">
+                  <label for="entryLogin">Usuario</label>
+                  <input id="entryLogin" type="text" autocomplete="off" />
+                </div>
+                <div class="field-row">
+                  <label for="entryEmail">Email</label>
+                  <input id="entryEmail" type="email" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="entryPassword">Senha</label>
+                <div class="password-row entry-password-row">
+                  <input id="entryPassword" type="password" autocomplete="off" />
+                  <button id="toggleEntryPassword" class="icon-button" type="button" title="Mostrar ou ocultar senha">Ver</button>
+                  <button id="copyPassword" class="icon-button" type="button" title="Copiar senha">Copiar</button>
+                  <button id="generatePassword" class="icon-button" type="button" title="Gerar senha">Gerar</button>
+                </div>
+              </div>
+
+              <div class="two-columns">
+                <div class="field-row">
+                  <label for="entryAgency">Agencia</label>
+                  <input id="entryAgency" type="text" inputmode="numeric" autocomplete="off" />
+                </div>
+                <div class="field-row">
+                  <label for="entryAccount">Conta</label>
+                  <input id="entryAccount" type="text" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="two-columns">
+                <div class="field-row">
+                  <label for="entryUrl">Site</label>
+                  <input id="entryUrl" type="url" inputmode="url" autocomplete="off" placeholder="https://" />
+                </div>
+                <div class="field-row">
+                  <label for="entryPhone">Telefone</label>
+                  <input id="entryPhone" type="tel" inputmode="tel" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="entryNotes">Notas</label>
+                <textarea id="entryNotes" rows="5"></textarea>
+              </div>
+
+              <p id="saveMessage" class="message" role="status"></p>
+            </form>
+          </section>
+        </div>
+
+        <button id="mobileNewButton" class="floating-add" type="button" title="Novo acesso">+</button>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
