@@ -1,0 +1,325 @@
+{
+  "users": [
+    {
+      "id": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "name": "vinicius santos luz",
+      "email": "viniciuscruzst@gmail.com",
+      "passwordHash": "scrypt$QHHh4cFKPkpO26ucyZNmpw==$GSDQHJTvuTIOJYlYWdbFvHHwrZC3pvn4X6Tvrn/5taReSFQltshlF2oLyQ2hi02W7bFATbcmj9v98P+LLw3FOQ==",
+      "createdAt": "2026-05-17T21:37:44.934Z"
+    }
+  ],
+  "workspaces": [
+    {
+      "id": "workspace_e1a37816-f16b-4500-a795-baf447b40854",
+      "name": "Nexa",
+      "createdBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "createdAt": "2026-05-17T21:37:44.934Z"
+    }
+  ],
+  "workspaceMembers": [
+    {
+      "id": "member_a3e266dc-7996-4a54-9757-7aef1738f1a3",
+      "workspaceId": "workspace_e1a37816-f16b-4500-a795-baf447b40854",
+      "userId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "role": "admin",
+      "createdAt": "2026-05-17T21:37:44.934Z"
+    }
+  ],
+  "vaultItems": [
+    {
+      "id": "item_45c03326-2576-401e-b0c9-7a40a6e67d6a",
+      "scope": "private",
+      "ownerUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "workspaceId": null,
+      "encryptedData": {
+        "iv": "nyNm+h9eokcaBI+x",
+        "data": "xFl06RClQ95ZmmKunEiwpnKJsDSed/FTTke04cxIjMNdGn6ZIqkEvFXP703piLw/Je7WFmEPv6FI2TYBg/Xj+ZICVuiqPuF9SToo2e7ZHbtKnzw7P3ssCqbzpnb1vt6Gb8e4DOB02dAV/6pCfrPWZeYy3x+ujIH1flwQInpcCqYnWdNcpxUTsAfjCn710SP6hAtYh6hsN5Qv19tpGeitgo5TGApm8gHB7YnHhRyD49KuMefxryIYPgDl/ZxJHzCLgM21Z6+r9Db/fA2VKVtryV9ix0bIHyTGbCUmdVmVSaHP4O56r75+EXvWIiZ3bWuK6HEjpnl8uVU0sb3+ypntimyoiSL/LvuklYDYx6IzbprB2c/qKd10PjeVAmwsjIiN2lGSd9wwnofV4D0eJWp3Tx2N/CRzuavUXF2+QvpcioMZIYnB"
+      },
+      "metadata": {
+        "title": "VINICIUS SANTOS LUZ",
+        "type": "email",
+        "email": "viniciuscruzst@gmail.com",
+        "syncGroupId": ""
+      },
+      "syncEnabled": false,
+      "syncRole": null,
+      "syncGroupId": null,
+      "linkedItemId": null,
+      "createdBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "updatedBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "createdAt": "2026-05-17T21:55:16.786Z",
+      "updatedAt": "2026-05-17T21:55:16.786Z"
+    },
+    {
+      "id": "item_c05366d5-b36a-4e0b-9640-de30be2ecb21",
+      "scope": "private",
+      "ownerUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "workspaceId": null,
+      "encryptedData": {
+        "iv": "g+mVVkYSv8HR7ksU",
+        "data": "BkL16JbinrmOgFdzYZr44lPDJNdUm2DzkJ4VtiNeZpJ0CJa2R+FbEpR0pyGpvN7tcsFeCObOp4FSYa9Mp1EjRoRwdFgead0JPU0EcxsRlh1ZL2TFmSo53aL67EqEkgSqKKmDVtaZ8M/9pXheCRf4lwlcRuSVPKijGArLY+JPKZkFwEMESjgG4PzbnUehi9lXg7ffAl+6voGCLag55vYaOd311NskWRT9tl48UXrgj/YriibuFVq6EJm7v7Xv5hGOn0uIKj2K6VpfkK1BQt3A7EN3ghYT0YwKirOb1LPDyk0qzQkKw1KowNP/5PtXsailltjtHGeounHPPC82KdcO7e/+FxN7mkntR/fs/slbb1qI4szwRhcGJdy5l/eqvxBfS4vjU6Z2dSA1ZPPOjh3+iodvYEaIp5xjfjz9AdQlbaQDDKSPCOu1eQ=="
+      },
+      "metadata": {
+        "title": "VINICIUS SANTOS LUZ",
+        "type": "email",
+        "email": "viniciuscruzst@gmail.com",
+        "syncGroupId": "0080ddc5-140a-4c09-b4bb-9e8f45d04c2a"
+      },
+      "syncEnabled": true,
+      "syncRole": "source",
+      "syncGroupId": "0080ddc5-140a-4c09-b4bb-9e8f45d04c2a",
+      "linkedItemId": "44151ee0-ee89-4161-af69-2af5ebd2d966",
+      "createdBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "updatedBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "createdAt": "2026-05-17T21:55:37.990Z",
+      "updatedAt": "2026-05-17T21:56:05.884Z"
+    },
+    {
+      "id": "item_90b0aaca-ab60-4b7a-a1b6-51c135e8c1fa",
+      "scope": "shared",
+      "ownerUserId": null,
+      "workspaceId": "workspace_e1a37816-f16b-4500-a795-baf447b40854",
+      "encryptedData": {
+        "iv": "MnDh8Nx2seado0va",
+        "data": "cKEsrTFuvnsT2Ha5XQa+NCZaICIznrn5P3IJeyREfiBSkYYKIbO9GpHBGG18fwX4pUXMmrFZcIYSDzEynwxhyJgTH08h+YDh6MeeLU0LaB7ql7FjAi3taSMuVp3nPJAAxJWT/+46A9C+LklcpkZKy/rCkZB7ylH7nfYCV4XrOHe59DJIjeK0fp9s3d53nHXpaDqL0tS8+k9kNJ99ccE4sXq/vkAxzwmsjLWtNDI2lajQwngLZP4WXB6gldm7Df+/BhlWKrVYgSGdzdIHitX+r28hVv9GUoGuG8C8Lef2IZkSBrcaNk6pUYabvYmKrsNrUrxuq5TQBloE5i8MMho+lyx86uMv+n/Aive6/JyYIe26bjYDNBuvEbci1/7itAqmAPoKiLNSv8jL97CyplAemJInFjPQs1mkSSAR1kz4kJzQYcrEM0AJkQ=="
+      },
+      "metadata": {
+        "title": "VINICIUS SANTOS LUZ",
+        "type": "email",
+        "email": "viniciuscruzst@gmail.com",
+        "syncGroupId": "0080ddc5-140a-4c09-b4bb-9e8f45d04c2a"
+      },
+      "syncEnabled": true,
+      "syncRole": "mirror",
+      "syncGroupId": "0080ddc5-140a-4c09-b4bb-9e8f45d04c2a",
+      "linkedItemId": "05a5e364-5e84-4dd6-8ea5-946b08bcd05d",
+      "createdBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "updatedBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "createdAt": "2026-05-17T21:55:40.850Z",
+      "updatedAt": "2026-05-17T21:56:05.936Z"
+    },
+    {
+      "id": "item_07ce5cfe-5fac-4935-ba3d-17803f067378",
+      "scope": "private",
+      "ownerUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "workspaceId": null,
+      "encryptedData": {
+        "iv": "TJQDdasCnk2Qq/Ax",
+        "data": "lj1A3TJ3n0h4KQX54EKxTEVoqc2aabACoVDL4uZAG+mcBKWQeoC47VsooTsgJ4cmDMbiLMyoLxGEazLe6JearnWgdrJtOD9u8ouTaDHJSHY98tWu960PDgUgWgoiV4Pg1g4FlejfdRFpojokr7IZeNvSoAQV4dWOeWHikykD83R2zFUX2SXSqGPS+GV1SBbC472aCcOoXlKV1fkHaH5pjeHfiN2N6KRq8WnNm6gocvBZrq4pahxHITJOZU7uQyFPoIwrDuzKmvfVvJ/LITHYoehStM3hbZd9wzCa6O8zskOpZYLhBJPoDBXEULlgswOd0kEiLaOx6iraYWc2XPrgA6/POU7+sMj0gseZ4G5dkaT2eFKn57H7hNIYlTiWiCxMv99gZtfZd9TBfB/Zi7W/b8YSRKiylfXCKCFd0gp5AHAnPF7iXFc="
+      },
+      "metadata": {
+        "title": "COFRE DE ACESSOS",
+        "type": "app",
+        "email": "viniciuscruzst@gmail.com",
+        "syncGroupId": ""
+      },
+      "syncEnabled": false,
+      "syncRole": null,
+      "syncGroupId": null,
+      "linkedItemId": null,
+      "createdBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "updatedBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "createdAt": "2026-05-17T21:56:47.649Z",
+      "updatedAt": "2026-05-17T21:56:52.155Z"
+    },
+    {
+      "id": "item_d48b9bc1-6531-411a-9c7e-8be4abd52f23",
+      "scope": "private",
+      "ownerUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "workspaceId": null,
+      "encryptedData": {
+        "iv": "Ix3cOtKz7OlYnCM7",
+        "data": "8Wn1PVT9wGKx/FsXdv5777BRJADCG3nPy6uuOJALA6JML0lt8+v+4DvEyl440WHO/IwU2AQW/RXg7oFs0iZVe69GMKT6mHzKv6GUKjQMJZ0J/OIIWniXTfMh+BkVEkzajpnSNNAqOESiWL2fibn/giAQNkT9EaJlnLGz2K/f/hnyaxG2C1WyV0mnXzcUhZu3R85BKETMDV9pX8k9JzmDJwmlU9Aoc/djJXXPd7gmkgWCCDczYXZ7oZYYW2MhMIAiBxccwLswzV+XfM6P0YmFRrWXuJadRFJ4QkPxUP7Ri5ellnmSv9LXkKf0ifJgJDxBhzi9SXW/HmaiH5kM5qtVldEUk6nYnZq6FXmfsscIsoE+mJlavQM1wcZacwmhslleb+vdsijPz5eRqt0OrIVtk3r1JVmNGQKTa4ZSn9cOFmB193Ap+9o="
+      },
+      "metadata": {
+        "title": "COFRE DE ACESSOS",
+        "type": "app",
+        "email": "viniciuscruzst@gmail.com",
+        "syncGroupId": "673c2bcc-8794-4f1d-b281-97298674fe59"
+      },
+      "syncEnabled": true,
+      "syncRole": "source",
+      "syncGroupId": "673c2bcc-8794-4f1d-b281-97298674fe59",
+      "linkedItemId": "9df9031d-8572-45a8-875f-a7577d4f2810",
+      "createdBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "updatedBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "createdAt": "2026-05-17T21:57:18.836Z",
+      "updatedAt": "2026-05-17T21:57:20.565Z"
+    },
+    {
+      "id": "item_70ea035f-7dd2-43d7-a161-ad263da6eeec",
+      "scope": "shared",
+      "ownerUserId": null,
+      "workspaceId": "workspace_e1a37816-f16b-4500-a795-baf447b40854",
+      "encryptedData": {
+        "iv": "yalieaUMZuS6YQ7B",
+        "data": "qJmgFUv7Tf/uRs4pHAy4peO0uqYlrpLxSdrWq3NVyFzWfxZAUxjpDH5dDCaUJJWPeA0GmEGbRLXb27SvKVdW1CDrLQx6RAiE/CKzz0s+g3ymjxnqXeocqdKUAp93PJTA5oqyNsJYT3Mg0XrJ9VwWBKkmlb1EWENPMafKsLW7DjwKwWWPxy0+HPXHdex6+3KkNROrL71HyDhLw2LiZhEbOdM5t8o/rhv+pJJnB6BJvUFetbFSphO04V96mFv1l0f6ac127sEgfqW79/2L+G/LsondWznoSgOKM6dYMRSWvFn1NVHiPeWGpOTpuM/tu1FZdu04E3aoabtFzVNdaZCFZAEKwa/E34/3SOF8UMXupwhE/rRi62axLNj3PkXmPvVH4InukaSpEGKBVXMbWDG3kgiZeZiUA/c+tC5a+mESIfNNawDt4mM="
+      },
+      "metadata": {
+        "title": "COFRE DE ACESSOS",
+        "type": "app",
+        "email": "viniciuscruzst@gmail.com",
+        "syncGroupId": "673c2bcc-8794-4f1d-b281-97298674fe59"
+      },
+      "syncEnabled": true,
+      "syncRole": "mirror",
+      "syncGroupId": "673c2bcc-8794-4f1d-b281-97298674fe59",
+      "linkedItemId": "29c2637a-9302-4091-8bcb-e93f1a05e5d4",
+      "createdBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "updatedBy": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "createdAt": "2026-05-17T21:57:20.641Z",
+      "updatedAt": "2026-05-17T21:57:20.641Z"
+    }
+  ],
+  "auditLog": [
+    {
+      "id": "audit_3f7901aa-32ea-4b80-91ad-78af00b6cdbc",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "auth.register",
+      "resource": {
+        "userId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+        "workspaceId": "workspace_e1a37816-f16b-4500-a795-baf447b40854"
+      },
+      "createdAt": "2026-05-17T21:37:44.934Z"
+    },
+    {
+      "id": "audit_0c7c1809-e111-41c9-bab4-4619cdf62d60",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "auth.login",
+      "resource": {
+        "userId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535"
+      },
+      "createdAt": "2026-05-17T21:50:19.671Z"
+    },
+    {
+      "id": "audit_6206dede-903c-465a-97a0-b5bc19b33998",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "auth.login",
+      "resource": {
+        "userId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535"
+      },
+      "createdAt": "2026-05-17T21:53:26.224Z"
+    },
+    {
+      "id": "audit_1cf43ff4-11bc-4e87-ba18-760a54a54ae5",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.create",
+      "resource": {
+        "itemId": "item_45c03326-2576-401e-b0c9-7a40a6e67d6a",
+        "scope": "private",
+        "workspaceId": null
+      },
+      "createdAt": "2026-05-17T21:55:16.786Z"
+    },
+    {
+      "id": "audit_47e46bdb-20ad-4457-8667-282ad82408cb",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.create",
+      "resource": {
+        "itemId": "item_c05366d5-b36a-4e0b-9640-de30be2ecb21",
+        "scope": "private",
+        "workspaceId": null
+      },
+      "createdAt": "2026-05-17T21:55:37.990Z"
+    },
+    {
+      "id": "audit_d452e408-141a-4b10-979f-1dbc1b71dc56",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.update",
+      "resource": {
+        "itemId": "item_c05366d5-b36a-4e0b-9640-de30be2ecb21",
+        "scope": "private",
+        "workspaceId": null
+      },
+      "createdAt": "2026-05-17T21:55:40.783Z"
+    },
+    {
+      "id": "audit_8325d861-c309-4189-85f1-3db109ef2343",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.create",
+      "resource": {
+        "itemId": "item_90b0aaca-ab60-4b7a-a1b6-51c135e8c1fa",
+        "scope": "shared",
+        "workspaceId": "workspace_e1a37816-f16b-4500-a795-baf447b40854"
+      },
+      "createdAt": "2026-05-17T21:55:40.850Z"
+    },
+    {
+      "id": "audit_f195c4ff-a6bd-4240-a916-6d2f1ff69ab3",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.update",
+      "resource": {
+        "itemId": "item_c05366d5-b36a-4e0b-9640-de30be2ecb21",
+        "scope": "private",
+        "workspaceId": null
+      },
+      "createdAt": "2026-05-17T21:56:05.884Z"
+    },
+    {
+      "id": "audit_56b7bfd8-ac71-4596-8b4e-08949714f612",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.update",
+      "resource": {
+        "itemId": "item_90b0aaca-ab60-4b7a-a1b6-51c135e8c1fa",
+        "scope": "shared",
+        "workspaceId": "workspace_e1a37816-f16b-4500-a795-baf447b40854"
+      },
+      "createdAt": "2026-05-17T21:56:05.936Z"
+    },
+    {
+      "id": "audit_ae2ada31-5b85-41a7-9089-efba2a3aa5e5",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.create",
+      "resource": {
+        "itemId": "item_07ce5cfe-5fac-4935-ba3d-17803f067378",
+        "scope": "private",
+        "workspaceId": null
+      },
+      "createdAt": "2026-05-17T21:56:47.649Z"
+    },
+    {
+      "id": "audit_be5de74a-e3eb-4f54-a952-6611bf255bd7",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.update",
+      "resource": {
+        "itemId": "item_07ce5cfe-5fac-4935-ba3d-17803f067378",
+        "scope": "private",
+        "workspaceId": null
+      },
+      "createdAt": "2026-05-17T21:56:52.155Z"
+    },
+    {
+      "id": "audit_3b2e784d-c582-4a51-bba0-f2e28d0e5a91",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.create",
+      "resource": {
+        "itemId": "item_d48b9bc1-6531-411a-9c7e-8be4abd52f23",
+        "scope": "private",
+        "workspaceId": null
+      },
+      "createdAt": "2026-05-17T21:57:18.836Z"
+    },
+    {
+      "id": "audit_fe8c08b7-55a2-43e4-b0ef-3102f68111e6",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.update",
+      "resource": {
+        "itemId": "item_d48b9bc1-6531-411a-9c7e-8be4abd52f23",
+        "scope": "private",
+        "workspaceId": null
+      },
+      "createdAt": "2026-05-17T21:57:20.565Z"
+    },
+    {
+      "id": "audit_5572e728-3a1a-48f2-997b-f91c670d6111",
+      "actorUserId": "user_3f380d68-4d07-4f96-a778-b3bb21f28535",
+      "action": "vault.item.create",
+      "resource": {
+        "itemId": "item_70ea035f-7dd2-43d7-a161-ad263da6eeec",
+        "scope": "shared",
+        "workspaceId": "workspace_e1a37816-f16b-4500-a795-baf447b40854"
+      },
+      "createdAt": "2026-05-17T21:57:20.641Z"
+    }
+  ]
+}
